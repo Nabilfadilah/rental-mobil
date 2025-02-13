@@ -19,6 +19,7 @@ return new class extends Migration
             // menambah user id, one to many satu user dapat memilik banyak mobil
             $table->foreignIdFor(User::class);
             $table->string('nopolisi')->nullable();
+            $table->string('merk')->nullable();
             $table->enum('jenis', ['sedan', 'MVP', 'SUV'])->nullable();
             $table->string('kapasitas')->nullable();
             $table->string('harga')->nullable();
