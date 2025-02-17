@@ -29,7 +29,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-
+    @livewireStyles
 </head>
 
 <body>
@@ -45,24 +45,19 @@
 
 
         <!-- Sidebar Start -->
-        @include('components.sidebar');
+        @include('components.sidebar')
         <!-- Sidebar End -->
 
 
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
-            @include('components.navbar');
+            @include('components.navbar')
             <!-- Navbar End -->
 
 
-            {{-- card --}}
-            @include('components.card');
-            <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    @yield('content')
-                </div>
-            </div>
+            @yield('content')
+
 
 
             <!-- Footer Start -->
@@ -89,6 +84,8 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
+    @livewireScripts
 </body>
 
 </html>
