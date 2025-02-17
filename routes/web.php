@@ -19,5 +19,5 @@ Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/login/keluar', [LoginController::class, 'keluar'])->name('login.keluar');
 
 Route::get('/users', function () {
-    return view('user');
+    return view('users.user');
 })->name('users')->middleware('auth');
