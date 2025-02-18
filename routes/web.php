@@ -21,3 +21,7 @@ Route::get('/login/keluar', [LoginController::class, 'keluar'])->name('login.kel
 Route::get('/users', function () {
     return view('users.user');
 })->name('users')->middleware('auth');
+
+Route::get('/mobil', function () {
+    return view('mobil.index');
+})->name('mobil')->middleware('auth');
