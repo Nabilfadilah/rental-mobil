@@ -13,19 +13,20 @@ use function Livewire\store;
 class UsersComponent extends Component
 {
     use WithPagination, WithoutUrlPagination;
-    use WithPagination;
 
     protected $paginationTheme = "bootstrap";
 
     public $addPage = false;
     public $nama, $email, $password, $role;
 
+    // view user
     public function render()
     {
         $data['user'] = User::paginate(5);
         return view('livewire.users-component', $data);
     }
 
+    // add user
     public function create()
     {
         $this->addPage = true;
@@ -57,5 +58,16 @@ class UsersComponent extends Component
 
         session()->flash('success', 'Berhasil simpan data!');
         $this->reset();
+    }
+
+    // delete user
+    public function destroy($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            session()->flash('success', 'Berhasil hapus data!');
+            $this->resetPage(); // Agar daftar user ter-refresh
+        }
     }
 }
