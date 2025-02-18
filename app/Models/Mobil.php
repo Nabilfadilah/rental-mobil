@@ -14,7 +14,9 @@ class Mobil extends Model
     // menentukan primary key ke model apa?
     protected $table = 'mobils';
     protected $primaryKey = 'id';
-    protected $fillable = ['id', 'user_id', 'nopolisi', 'merk', 'jenis', 'kapasitas'];
+    // protected $fillable = ['id', 'user_id', 'nopolisi', 'merk', 'jenis', 'kapasitas', 'harga', 'foto'];
+    protected $fillable = ['user_id', 'nopolisi', 'merk', 'jenis', 'kapasitas', 'harga', 'foto'];
+
 
     // membuat relations nya dengan user
     public function user(): BelongsTo
