@@ -23,7 +23,7 @@
                             <th scope="col">Email</th>
                             <th scope="col">Role</th>
                             <th>
-
+                                Aksi
                             </th>
                         </tr>
                     </thead>
@@ -34,6 +34,16 @@
                                 <td>{{ $data->name }}</td>
                                 <td>{{ $data->email }}</td>
                                 <td>{{ $data->role }}</td>
+                                <td>
+                                    <button class="btn btn-info btn-sm text-white">Edit</button>
+                                    {{-- <button class="btn btn-danger btn-sm text-white"
+                                        wire:click="destroy({{ $data->id }})">Delete
+                                    </button> --}}
+                                    <button class="btn btn-danger btn-sm text-white"
+                                        onclick="confirmDelete({{ $data->id }})">
+                                        Delete
+                                    </button>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -50,3 +60,10 @@
     </div>
 </div>
 <!-- Table End -->
+<script>
+    function confirmDelete(id) {
+        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+            @this.call('destroy', id);
+        }
+    }
+</script>
