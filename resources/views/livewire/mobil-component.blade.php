@@ -25,48 +25,52 @@
                             <th scope="col">Kapasitas</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Foto</th>
-                            <th>
-                                Aksi
-                            </th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($mobil as $data)
+                        @forelse ($mobils as $data)
                             <tr>
                                 <th scope="row">{{ $loop->iteration }}.</th>
                                 <td>{{ $data->nopolisi }}</td>
                                 <td>{{ $data->merk }}</td>
                                 <td>{{ $data->jenis }}</td>
                                 <td>{{ $data->kapasitas }}</td>
-                                <td>{{ $data->harga }}</td>
-                                <td>{{ $data->foto }}</td>
+                                <td>Rp {{ number_format($data->harga, 0, ',', '.') }}</td>
+                                <td>
+                                    @if ($data->foto)
+                                        <img src="{{ asset('storage/' . $data->foto) }}" width="80">
+                                    @else
+                                        <span class="text-danger">Tidak ada foto</span>
+                                    @endif
+                                </td>
                                 <td>
                                     <button class="btn btn-info btn-sm text-white"
                                         wire:click="edit({{ $data->id }})">
                                         Edit
                                     </button>
                                     <button class="btn btn-danger btn-sm text-white"
-                                        onclick="confirmDelete({{ $data->id }})">
+                                        wire:click="confirmDelete({{ $data->id }})">
                                         Delete
                                     </button>
                                 </td>
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6">Data mobil tidak ada!</td>
+                                <td colspan="8" class="text-center">Data mobil tidak ada!</td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
 
-                {{ $mobil->links() }}
+                {{ $mobils->links() }}
 
                 @if ($addPage)
-                    @include('users.create')
+                    @include('mobil.create')
                 @endif
 
                 @if ($editPage)
-                    @include('users.edit')
+                    @include('mobil.edit')
                 @endif
 
             </div>
@@ -74,10 +78,23 @@
     </div>
 </div>
 <!-- Table End -->
-<script>
-    function confirmDelete(id) {
-        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-            @this.call('destroy', id);
-        }
-    }
-</script>
+
+@push('scripts')
+    <script>
+        window.addEventListener('swal:confirm', event => {
+            Swal.fire({
+                title: event.detail.title,
+                text: event.detail.text,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
+                confirmButtonText: "Ya, Hapus!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Livewire.emit('deleteConfirmed', event.detail.id);
+                }
+            });
+        });
+    </script>
+@endpush
