@@ -35,10 +35,10 @@
                                 <td>{{ $data->email }}</td>
                                 <td>{{ $data->role }}</td>
                                 <td>
-                                    <button class="btn btn-info btn-sm text-white">Edit</button>
-                                    {{-- <button class="btn btn-danger btn-sm text-white"
-                                        wire:click="destroy({{ $data->id }})">Delete
-                                    </button> --}}
+                                    <button class="btn btn-info btn-sm text-white"
+                                        wire:click="edit({{ $data->id }})">
+                                        Edit
+                                    </button>
                                     <button class="btn btn-danger btn-sm text-white"
                                         onclick="confirmDelete({{ $data->id }})">
                                         Delete
@@ -53,6 +53,10 @@
 
                 @if ($addPage)
                     @include('users.create')
+                @endif
+
+                @if ($editPage)
+                    @include('users.edit')
                 @endif
 
             </div>
