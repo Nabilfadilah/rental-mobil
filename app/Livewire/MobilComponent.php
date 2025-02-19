@@ -75,4 +75,15 @@ class MobilComponent extends Component
         $this->harga = '';
         $this->foto = null;
     }
+
+    // delete mobil
+    public function destroy($id)
+    {
+        $mobil = Mobil::find($id);
+        if ($mobil) {
+            $mobil->forceDelete(); // Hapus secara permanen
+            session()->flash('success', 'Berhasil hapus data secara permanen!');
+            $this->resetPage(); // Agar daftar user ter-refresh
+        }
+    }
 }
