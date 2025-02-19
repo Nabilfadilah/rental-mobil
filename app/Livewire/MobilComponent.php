@@ -31,7 +31,7 @@ class MobilComponent extends Component
     public function render()
     {
         return view('livewire.mobil-component', [
-            'mobils' => Mobil::latest()->paginate(10),
+            'mobils' => Mobil::latest()->paginate(5),
         ]);
     }
     // add mobil
@@ -75,6 +75,54 @@ class MobilComponent extends Component
         $this->harga = '';
         $this->foto = null;
     }
+
+    // edit mobil
+    public function edit($id)
+    {
+        $this->editPage = true;
+        $this->id = $id;
+
+        $mobil = Mobil::find($id);
+        $this->nopolisi = $mobil->nopolisi;
+        $this->merk = $mobil->merk;
+        $this->jenis = $mobil->jenis;
+        $this->kapasitas = $mobil->kapasitas;
+        $this->harga = $mobil->harga;
+    }
+
+    public function update()
+    {
+        $mobil = Mobil::find($this->id);
+        if ($mobil) {
+            // Jika ada foto baru, simpan foto dan hapus foto lama
+            if ($this->foto) {
+                $fotoPath = $this->foto->store('public/mobil');
+                $fotoName = str_replace('public/', '', $fotoPath);
+
+                // Hapus foto lama jika ada
+                if ($mobil->foto) {
+                    Storage::delete('public/' . $mobil->foto);
+                }
+
+                $mobil->update(['foto' => $fotoName]); // Update hanya foto dulu
+            }
+
+            // Update data lainnya
+            $mobil->update([
+                'user_id' => Auth::id(),
+                'nopolisi' => $this->nopolisi,
+                'merk' => $this->merk,
+                'jenis' => $this->jenis,
+                'kapasitas' => $this->kapasitas,
+                'harga' => $this->harga,
+            ]);
+
+            session()->flash('success', 'Data berhasil diperbarui!');
+            $this->reset();
+            $this->editPage = false;
+        }
+    }
+
 
     // delete mobil
     public function destroy($id)
