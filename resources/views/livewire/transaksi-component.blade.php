@@ -9,6 +9,12 @@
                     </div>
                 @endif
 
+                @if (session()->has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="m-0 fw-bold">Daftar Mobil</h4>
                 </div>
@@ -30,7 +36,8 @@
                                             Orang</span></p>
                                 </div>
                                 <div class="card-footer bg-white border-0 text-center pb-3">
-                                    <a href="#" class="btn btn-outline-success w-100">Pesan Sekarang</a>
+                                    <button wire:click="create({{ $data->id }},{{ $data->harga }})"
+                                        class="btn btn-outline-success w-100">Pesan Sekarang</button>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +45,11 @@
                 </div>
 
                 {{-- Pagination jika diperlukan --}}
-                {{-- {{ $mobil->links() }} --}}
+                {{ $mobil->links() }}
+
+                @if ($addPage)
+                    @include('transaksi.create')
+                @endif
 
             </div>
         </div>
