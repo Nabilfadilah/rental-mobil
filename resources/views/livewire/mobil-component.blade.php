@@ -50,9 +50,10 @@
                                         Edit
                                     </button>
                                     <button class="btn btn-danger btn-sm text-white"
-                                        wire:click="confirmDelete({{ $data->id }})">
+                                        onclick="confirmDelete({{ $data->id }})">
                                         Delete
                                     </button>
+
                                 </td>
                             </tr>
                         @empty
@@ -79,22 +80,10 @@
 </div>
 <!-- Table End -->
 
-@push('scripts')
-    <script>
-        window.addEventListener('swal:confirm', event => {
-            Swal.fire({
-                title: event.detail.title,
-                text: event.detail.text,
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#d33",
-                cancelButtonColor: "#3085d6",
-                confirmButtonText: "Ya, Hapus!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Livewire.emit('deleteConfirmed', event.detail.id);
-                }
-            });
-        });
-    </script>
-@endpush
+<script>
+    function confirmDelete(id) {
+        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+            @this.call('destroy', id);
+        }
+    }
+</script>
