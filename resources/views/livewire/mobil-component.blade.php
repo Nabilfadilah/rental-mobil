@@ -13,6 +13,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h6 class="m-0">Table Mobil</h6>
                     <button wire:click="create" class="btn btn-primary btn-sm">+ Tambah</button>
+                    {{-- <button wire:click="create({{ $data->mobil_id }})" class="btn btn-primary btn-sm">+ Tambah</button> --}}
                 </div>
 
                 <table class="table">
