@@ -11,7 +11,7 @@
                 @endif
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h6 class="m-0">Basic Table</h6>
+                    <h6 class="m-0">Table User</h6>
                     <button wire:click="create" class="btn btn-primary btn-sm">+ Tambah</button>
                 </div>
 
