@@ -17,6 +17,7 @@
 
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <h4 class="m-0 fw-bold">Daftar Mobil</h4>
+                    {{-- <button class="btn btn-primary btn-sm" wire:click="lihat">Proses Transaksi</button> --}}
                 </div>
 
                 {{-- Grid untuk card --}}
