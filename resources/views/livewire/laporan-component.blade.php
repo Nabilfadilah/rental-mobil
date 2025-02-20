@@ -14,6 +14,10 @@
                     <h6 class="m-0 mb-2 mb-md-0">Data Laporan Transaksi "Selesai"</h6>
                     <div class="row g-2 justify-content-end">
                         <div class="col-12 col-md-auto">
+                            <button class="btn btn-outline-success btn-sm" wire:click="exportpdf">Export pdf</button>
+                        </div>
+
+                        <div class="col-12 col-md-auto">
                             <input type="date" wire:model="tanggal1" class="form-control" placeholder="Tanggal">
                         </div>
                         <div class="col-12 col-md-auto">
@@ -45,7 +49,7 @@
                                 <td>{{ $data->nama }}</td>
                                 <td>{{ $data->alamat }}</td>
                                 <td>{{ $data->tgl_pesan }}</td>
-                                <td>{{ $data->total }}</td>
+                                <td class="text-right">{{ number_format($data->total, 0, ',', '.') }}</td>
                                 <td>{{ $data->lama }}</td>
                             </tr>
                         @empty
