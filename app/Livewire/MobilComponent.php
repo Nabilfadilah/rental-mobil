@@ -28,12 +28,19 @@ class MobilComponent extends Component
     ];
 
     // list mobil
+    // public function render()
+    // {
+    //     return view('livewire.mobil-component', [
+    //         'mobils' => Mobil::latest()->paginate(5),
+    //     ]);
+    // }
     public function render()
     {
-        return view('livewire.mobil-component', [
-            'mobils' => Mobil::latest()->paginate(5),
-        ]);
+        $data['mobils'] = Mobil::latest()->paginate(5);
+        return view('livewire.mobil-component', $data);
     }
+
+
     // add mobil
     public function create()
     {
