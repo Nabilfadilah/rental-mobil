@@ -13,7 +13,7 @@ class TransaksiComponent extends Component
 {
 
     use WithPagination, WithoutUrlPagination;
-    public $addPage, $editPage = false;
+    public $addPage, $lihatPage = false;
 
     public $user_id, $mobil_id, $nama, $ponsel, $alamat, $lama, $tgl_pesan, $total, $status, $harga;
 
@@ -64,9 +64,9 @@ class TransaksiComponent extends Component
         // memfilter jika mobilnya sudah ada yang pesan!
         $cari = Transaksi::Where('mobil_id', $this->mobil_id)
             ->where('tgl_pesan', $this->tgl_pesan)
-            ->where('status', '<>', 'PROSES')->get();
+            ->where('status', '!=', 'SELESAI')->count();
 
-        if ($cari) {
+        if ($cari == 1) {
             session()->flash('error', 'Maaf Mobil sudah ada yang memesan!');
         } else {
             Transaksi::create([
@@ -83,6 +83,16 @@ class TransaksiComponent extends Component
 
             session()->flash('success', 'Transaksi berhasil disimpan');
         }
+        // untuk menghubungkan dengan component yang lain
+        $this->dispatch('lihat-transaksi');
+
         $this->reset();
+    }
+
+    // lihat transaksi 
+    public function lihat()
+    {
+        $data['transaksi'] = Transaksi::paginate(10);
+        return view('transaksi.lihat');
     }
 }
