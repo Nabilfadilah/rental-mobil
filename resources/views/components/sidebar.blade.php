@@ -17,13 +17,23 @@
             </div>
         </div>
         <div class="navbar-nav w-100">
-            <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-            <a href="{{ route('transaksi') }}" class="nav-item nav-link"><i
-                    class="fa fa-shopping-cart me-2"></i>Transaksi</a>
-            <a href="{{ route('laporan') }}" class="nav-item nav-link"><i
-                    class="fa fa-file-archive me-2"></i>Laporan</a>
-            <a href="{{ route('mobil') }}" class="nav-item nav-link"><i class="fa fa-car me-2"></i>Mobil</a>
-            <a href="{{ route('users') }}" class="nav-item nav-link"><i class="fa fa-users me-2"></i>User</a>
+            <a href="{{ route('home') }}" class="nav-item nav-link {{ Request::routeIs('home') ? 'active' : '' }}">
+                <i class="fa fa-tachometer-alt me-2"></i>Dashboard
+            </a>
+            <a href="{{ route('transaksi') }}"
+                class="nav-item nav-link {{ Request::routeIs('transaksi') ? 'active' : '' }}">
+                <i class="fa fa-shopping-cart me-2"></i>Transaksi
+            </a>
+            <a href="{{ route('laporan') }}"
+                class="nav-item nav-link {{ Request::routeIs('laporan') ? 'active' : '' }}">
+                <i class="fa fa-file-archive me-2"></i>Laporan
+            </a>
+            <a href="{{ route('mobil') }}" class="nav-item nav-link {{ Request::routeIs('mobil') ? 'active' : '' }}">
+                <i class="fa fa-car me-2"></i>Mobil
+            </a>
+            <a href="{{ route('users') }}" class="nav-item nav-link {{ Request::routeIs('users') ? 'active' : '' }}">
+                <i class="fa fa-users me-2"></i>User
+            </a>
         </div>
     </nav>
 </div>
