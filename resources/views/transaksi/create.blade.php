@@ -69,7 +69,7 @@
                     {{-- total harga --}}
                     <div class="mb-3">
                         <label for="total" class="form-label">Total Harga Pemesanan</label>
-                        <input type="text" class="form-control" wire:model="total" id="total"
+                        <input type="text" disabled class="form-control" wire:model="total" id="total"
                             value="{{ @old('total') }}">
                         @error('total')
                             <div class="form-text text-danger">
