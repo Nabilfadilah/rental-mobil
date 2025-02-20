@@ -36,7 +36,7 @@
         <!-- Spinner Start -->
         <div id="spinner"
             class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <div class="spinner-border text-info" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
@@ -50,7 +50,7 @@
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <a href="index.html" class="">
-                                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>RentAbil</h3>
+                                <h3 class="text-info"><i class="fa fa-hashtag me-2"></i>RentAbil</h3>
                             </a>
                             <h3>Sign In</h3>
                         </div>
@@ -77,7 +77,7 @@
                                 @enderror
                             </div>
 
-                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
+                            <button type="submit" class="btn btn-info py-3 w-100 mb-4">Sign In</button>
                             <p class="text-center mb-0">Don't have an Account? <a href="{{ route('register') }}">Sign
                                     Up</a>
                             </p>

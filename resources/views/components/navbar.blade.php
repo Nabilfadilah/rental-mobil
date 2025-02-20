@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
     <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
-        <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+        <h2 class="text-info mb-0"><i class="fa fa-hashtag"></i></h2>
     </a>
     <a href="#" class="sidebar-toggler flex-shrink-0">
         <i class="fa fa-bars"></i>
@@ -17,7 +17,7 @@
             <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                 <a href="#" class="dropdown-item">
                     <div class="d-flex align-items-center">
-                        <img class="rounded-circle" src="{{ asset('assets/img/user.jpg') }}" alt=""
+                        <img class="rounded-circle" src="{{ asset('assets/img/user.jpeg') }}" alt=""
                             style="width: 40px; height: 40px;">
                         <div class="ms-2">
                             <h6 class="fw-normal mb-0">Jhon send you a message</h6>

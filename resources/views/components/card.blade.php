@@ -3,7 +3,7 @@
     <div class="row g-4">
         <div class="col-sm-6 col-xl-4">
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                <i class="fa fa-dollar-sign fa-3x text-primary"></i>
+                <i class="fa fa-dollar-sign fa-3x text-info"></i>
                 <div class="ms-3">
                     <p class="mb-2">Total Transaksi</p>
                     <h6 class="mb-0">@rupiah($transaksi)</h6>
@@ -12,7 +12,7 @@
         </div>
         <div class="col-sm-6 col-xl-4">
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                <i class="fa fa-car fa-3x text-primary"></i>
+                <i class="fa fa-car fa-3x text-info"></i>
                 <div class="ms-3">
                     <p class="mb-2">Jumlah Mobil</p>
                     <h6 class="mb-0">{{ $mobil }}</h6>
@@ -21,7 +21,7 @@
         </div>
         <div class="col-sm-6 col-xl-4">
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-                <i class="fa fa-users fa-3x text-primary"></i>
+                <i class="fa fa-users fa-3x text-info"></i>
                 <div class="ms-3">
                     <p class="mb-2">Total User</p>
                     <h6 class="mb-0">{{ $user }}</h6>
