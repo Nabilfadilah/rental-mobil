@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Transaksi;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
@@ -33,5 +34,31 @@ class LaporanComponent extends Component
     public function cari()
     {
         $this->dispatch('lihat-laporan');
+    }
+
+    // export pdf data laporan
+    public function exportpdf()
+    {
+        // untuk memilih data yang didownload jika menggunakan filter 
+        if ($this->tanggal2 != "") {
+            $data['transaksi'] = Transaksi::where('status', 'SELESAI')
+                ->whereBetween('tgl_pesan', [$this->tanggal1, $this->tanggal2])
+                ->get();
+
+            $pdf = Pdf::loadView('laporan.exportPdf', $data)->output();
+
+            return response()->streamDownload(
+                fn() => print($pdf),
+                "laporan-transaksi" . $this->tanggal1 . '--' . $this->tanggal2 . ".pdf"
+            );
+        } else {
+            $data['transaksi'] = Transaksi::where('status', 'SELESAI')->get();
+            $pdf = Pdf::loadView('laporan.exportPdf', $data)->output();
+
+            return response()->streamDownload(
+                fn() => print($pdf),
+                "laporan-transaksi.pdf"
+            );
+        }
     }
 }
