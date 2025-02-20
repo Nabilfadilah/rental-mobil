@@ -53,7 +53,7 @@
                         @enderror
                     </div>
 
-                    <button type="button" wire:click.prevent="store" class="btn btn-primary">Submit</button>
+                    <button type="button" wire:click.prevent="store" class="btn btn-primary btn-sm">Simpan</button>
                 </form>
             </div>
         </div>
